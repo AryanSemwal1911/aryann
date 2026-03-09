@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Video · 9:16</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 12px;
+        }
+
+        .phone-frame {
+            aspect-ratio: 9 / 16;
+            max-width: 360px;
+            width: 100%;
+            background-color: #000;
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 40px -8px rgba(0,0,0,0.5);
+        }
+
+        #demoVideo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 24px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+            color: white;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .welcome-text {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .sound-btn {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 16px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            background: rgba(76, 175, 80, 0.9);
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            cursor: pointer;
+            z-index: 20;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .sound-btn:hover {
+            background: rgba(86, 185, 90, 0.9);
+        }
+
+        .sound-btn:active {
+            transform: translateX(-50%) scale(0.98);
+        }
+
+        .message {
+            position: absolute;
+            bottom: 100px;
+            left: 24px;
+            right: 24px;
+            background: rgba(255, 87, 34, 0.9);
+            color: white;
+            padding: 12px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 14px;
+            z-index: 25;
+            display: none;
+            backdrop-filter: blur(5px);
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-frame">
+        <!-- Video: loop attribute = unlimited time -->
+        <video id="demoVideo" autoplay loop playsinline>
+            <source src="/video/demo.mp4" type="video/mp4">
+        </video>
+        
+        <div class="overlay">
+            <br>
+            <br>
+            <div class="welcome-text"> Meow Ghop Ghop Ghop </div>
+            <!-- USER INFO HATAYA - aapki demand -->
+        </div>
+        
+        <button class="sound-btn" id="soundBtn">🔊 Sound On</button>
+        
+        <div class="message" id="message">
+            ❌ Ye button kaam nahi karta! 😢
+        </div>
+    </div>
+
+    <script>
+        const video = document.getElementById('demoVideo');
+        const soundBtn = document.getElementById('soundBtn');
+        const message = document.getElementById('message');
+        
+        // Video play with sound - unlimited time (loop attribute already hai)
+        video.muted = false;
+        video.volume = 0.7;
+        
+        // Sound button - useless
+        soundBtn.addEventListener('click', () => {
+            message.style.display = 'block';
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 2000);
+            
+            soundBtn.style.transform = 'translateX(-50%) scale(0.95)';
+            setTimeout(() => {
+                soundBtn.style.transform = 'translateX(-50%) scale(1)';
+            }, 200);
+        });
+        
+        // Video pe click useless
+        video.addEventListener('click', () => {
+            message.textContent = '❌ Video control nahi kar sakte!';
+            message.style.display = 'block';
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 1500);
+        });
+        
+        console.log('🎬 Video unlimited time chalegi!');
+    </script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Log in · 9:16</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f1f3f6;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 12px;
+        }
+
+        .phone-frame {
+            aspect-ratio: 9 / 16;
+            max-width: 360px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px -8px rgba(0,0,0,0.25), 0 8px 16px -6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .screen-content {
+            flex: 1;
+            padding: 32px 24px 28px 24px;
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+        }
+
+        .main-heading {
+            font-size: 26px;
+            font-weight: 600;
+            line-height: 1.2;
+            color: #000000;
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+        }
+
+        .sub-heading {
+            font-size: 15px;
+            color: #5e5e5e;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        .field-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #1f1f1f;
+            margin-bottom: 7px;
+            letter-spacing: 0.2px;
+        }
+
+        .phone-input-group {
+            display: flex;
+            align-items: center;
+            border: 1.5px solid #d4d4d4;
+            border-radius: 12px;
+            background: #ffffff;
+            transition: border 0.15s, box-shadow 0.1s;
+            margin-bottom: 24px;
+            height: 56px;
+        }
+
+        .phone-input-group:focus-within {
+            border-color: #4285f4;
+            box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+        }
+
+        .country-code {
+            display: flex;
+            align-items: center;
+            padding: 0 12px 0 18px;
+            font-size: 18px;
+            font-weight: 500;
+            color: #1c1c1c;
+            border-right: 1.5px solid #d4d4d4;
+            background: #f8fafc;
+            height: 100%;
+            border-radius: 12px 0 0 12px;
+        }
+
+        .country-code span {
+            margin-right: 6px;
+            font-size: 18px;
+        }
+
+        .phone-number-input {
+            flex: 1;
+            border: none;
+            padding: 0 18px;
+            font-size: 18px;
+            font-weight: 400;
+            color: #202020;
+            height: 100%;
+            background: transparent;
+            outline: none;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .phone-number-input::placeholder {
+            color: #b9b9b9;
+            font-weight: 400;
+            font-size: 17px;
+        }
+
+        .continue-btn {
+            display: block;
+            width: 100%;
+            background: #fb641b;
+            border: none;
+            border-radius: 12px;
+            padding: 16px 12px;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            margin: 16px 0 20px;
+            box-shadow: 0 4px 8px rgba(251, 100, 27, 0.2);
+            transition: background 0.15s;
+            cursor: pointer;
+            border: 0;
+            line-height: 1.2;
+            letter-spacing: 0.3px;
+        }
+
+        .continue-btn:hover {
+            background: #e85b1a;
+        }
+
+        .continue-btn:active {
+            transform: scale(0.98);
+            background: #d55317;
+        }
+
+        .terms {
+            font-size: 13px;
+            color: #5e5e5e;
+            line-height: 1.55;
+            margin-top: 8px;
+            margin-bottom: 4px;
+        }
+
+        .terms a {
+            color: #2a55e5;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 13px;
+            margin-top: -15px;
+            margin-bottom: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-frame">
+        <div class="screen-content">
+            <h1 class="main-heading">Log in for the best experience</h1>
+            <p class="sub-heading">Enter your phone number to continue</p>
+<br>
+<br>
+            <label for="phone-input" class="field-label">Phone Number</label>
+            
+            <div class="phone-input-group">
+                <div class="country-code">
+                    <span>+91</span>
+                </div>
+                <input type="tel" id="phone-input" class="phone-number-input" placeholder="Phone number" maxlength="10">
+            </div>
+            <br>
+            <div id="errorMessage" class="error-message"></div>
+
+            <button class="continue-btn" id="continueBtn">Continue</button>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+            <div class="terms">
+                By continuing, you confirm that you are above 18 years of age, and you agree to the  
+                <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.
+            </div>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>
